@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="template.xhtml">
+			<ui:define name="pageTitle">Inicio de Sesion</ui:define>
+			
+			
+			
+	<ui:define name="content">
+		
+		<h:form id="form">
+		<br/>
+					<br/>
+					<h:outputLabel value="#{login.error()}" />
+					<br/>
+		 
+	  	  <p:growl id="messages" showDetail="true" sticky="true" autoUpdate="true"/>
+	  	  
+		<h:form>
+	        <h:panelGrid columns="2" cellpadding="5">
+	            <h:outputLabel for="usuario" value="Usuario:" />
+	            <h:inputText id="usuario" value="#{login.usuario}" name="usuario" />
+	 			
+	            <h:outputLabel for="password" value="Contraseña:" />
+	            <h:inputSecret id="password" value="#{login.clave}"  name="password">
+
+	            </h:inputSecret>
+	 			<f:facet name="footer">
+	            
+	            <h:form>	
+	             
+	            	<h:commandButton value="Login" update=":form:messages" action="#{login.login()}" name="submit"
+	                                 oncomplete="handleLoginRequest(xhr, status, args)" id="logueo"/>
+	                                 <h:messages for="logueo"/>
+						
+	     			<p:commandButton action="recuperarContrasena" value="¿Olvido su contraseña?"/>
+	     		</h:form>
+	     		</f:facet>
+	        </h:panelGrid>
+	        </h:form>
+	     
+
+ 			
+		
+		</h:form>
+
+			</ui:define>
+	</ui:composition>
+
+</html>
